@@ -2,7 +2,6 @@ from googleapiclient.discovery import build
 from datetime import datetime
 
 # Вставляем API ключ из файла
-api_key = 'YOUR_API_KEY'
 import json
 
 with open('config.json') as config_file:
@@ -33,9 +32,9 @@ def get_videos_in_date_range(channel_id, start_date, end_date):
 
         for item in response['items']:
             video_date = datetime.strptime(item['snippet']['publishedAt'], '%Y-%m-%dT%H:%M:%SZ')
-            print(f"Video Title: {item['snippet']['title']}, Published At: {video_date}")
             if start_date_limit <= video_date < end_date_limit:
                 videos.append(item)
+            print(f"Video Title: {item['snippet']['title']}, Published At: {video_date}")
 
         next_page_token = response.get('nextPageToken')
         if not next_page_token:
@@ -45,7 +44,7 @@ def get_videos_in_date_range(channel_id, start_date, end_date):
 
 # Укажи начальную и конечную даты в формате 'YYYY-MM-DDTHH:MM:SSZ'
 start_date = '1992-01-01T00:00:00Z'
-end_date = '2019-05-24T00:00:00Z'
+end_date = '2016-08-10T00:00:00Z'
 videos = get_videos_in_date_range(channel_id, start_date, end_date)
 
 print(f"Количество видео с {start_date} до {end_date}: {len(videos)}")
