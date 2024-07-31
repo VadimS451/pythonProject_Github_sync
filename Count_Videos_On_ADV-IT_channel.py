@@ -14,6 +14,7 @@ channel_id = 'UC-sAMvDe7gTmBbub-rWljZg'  # Правильный ID канала 
 # Создаем объект YouTube API
 youtube = build('youtube', 'v3', developerKey=api_key)
 
+
 def get_videos_in_date_range(channel_id, start_date, end_date):
     videos = []
     next_page_token = None
@@ -34,7 +35,7 @@ def get_videos_in_date_range(channel_id, start_date, end_date):
             video_date = datetime.strptime(item['snippet']['publishedAt'], '%Y-%m-%dT%H:%M:%SZ')
             if start_date_limit <= video_date < end_date_limit:
                 videos.append(item)
-            print(f"Video Title: {item['snippet']['title']}, Published At: {video_date}")
+                print(f"Video Title: {item['snippet']['title']}, Published At: {video_date}")
 
         next_page_token = response.get('nextPageToken')
         if not next_page_token:
@@ -43,8 +44,10 @@ def get_videos_in_date_range(channel_id, start_date, end_date):
     return videos
 
 # Укажи начальную и конечную даты в формате 'YYYY-MM-DDTHH:MM:SSZ'
-start_date = '1992-01-01T00:00:00Z'
-end_date = '2016-08-10T00:00:00Z'
+
+
+start_date = '2015-01-01T00:00:00Z'
+end_date = '2019-05-24T00:00:00Z'
 videos = get_videos_in_date_range(channel_id, start_date, end_date)
 
 print(f"Количество видео с {start_date} до {end_date}: {len(videos)}")
