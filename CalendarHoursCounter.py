@@ -6,7 +6,7 @@ from datetime import datetime, timedelta, timezone
 CALENDAR_ID = '3ea85527e406a2b94229ed0f2b70397fbe60f7fa4b1789e3a9c0fdb7546c1e3f@group.calendar.google.com'
 
 # Путь к файлу с ключом от сервисного аккаунта в Google Cloud
-CREDENTIALS_FILE = './calendarintegration-431411-8dba073a9c3c.json'
+CREDENTIALS_FILE = './calendarintegration-431411-9b6b001b20aa.json'
 
 def main():
     credentials = service_account.Credentials.from_service_account_file(CREDENTIALS_FILE, scopes=['https://www.googleapis.com/auth/calendar.readonly'])
