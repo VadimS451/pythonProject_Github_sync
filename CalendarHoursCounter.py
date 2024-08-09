@@ -29,8 +29,19 @@ def main():
     ).execute()
     events = events_result.get('items', [])
 
+    # Запрос ключевого слова
+    keyword = input("Введите ключевое слово встречающееся в событиях календаря: ")
+
     total_duration = 0
     for event in events:
+        # Проверка наличия ключевого слова (если введено)
+        if keyword and keyword.lower() not in event['summary'].lower():
+            continue  # Пропустить событие, если ключевое слово не найдено
+
+        # # Проверка наличия слова "учеба" в названии события
+        # if 'учеба' not in event['summary'].lower():
+        #     continue  # Пропустить событие, если "учеба" не найдено
+
         start = datetime.fromisoformat(event['start'].get('dateTime', event['start'].get('date')))
         end = datetime.fromisoformat(event['end'].get('dateTime', event['end'].get('date')))
         duration = end - start
