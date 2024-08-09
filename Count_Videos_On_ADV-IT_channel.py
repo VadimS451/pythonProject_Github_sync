@@ -47,7 +47,7 @@ def get_videos_in_date_range(channel_id, start_date, end_date):
 
 
 start_date = '2015-01-01T00:00:00Z'
-end_date = '2019-05-24T00:00:00Z'
+end_date = '2022-02-10T00:00:00Z'
 videos = get_videos_in_date_range(channel_id, start_date, end_date)
 
 print(f"Количество видео с {start_date} до {end_date}: {len(videos)}")
